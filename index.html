@@ -14,7 +14,10 @@
       align-items: center;
       min-height: 100vh;
     }
-
+	#jsonOutput {
+	
+	font-size: 26vw;
+	}
     .installs-container {
       color: white;
       font-size: 5vw;
@@ -31,7 +34,7 @@
 </head>
 <body>
   <div class="installs-container">
-    <span id="jsonOutput"></span>
+    Itemplate Wizard instals:<br><span id="jsonOutput"></span>
   </div>
 
   <script>
@@ -43,7 +46,7 @@
         .then(data => {
           const installs = data.data[0].Instals;
           const jsonOutputElement = document.getElementById('jsonOutput');
-          jsonOutputElement.textContent = 'Itemplate Wizard instals: '  + installs;
+          jsonOutputElement.textContent =  installs;
         })
         .catch(error => {
           console.error('Wystąpił błąd podczas pobierania danych:', error);
