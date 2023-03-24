@@ -6,20 +6,26 @@
   <title>Wyświetlanie wartości Instals z pliku JSON</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
-    }
-
-    .installs-container {
       background-color: black;
-      color: white;
-      font-size: 100vh;
-      text-align: center;
-      height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100%;
+      min-height: 100vh;
+    }
+
+    .installs-container {
+      color: white;
+      font-size: 5vw;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .installs-container {
+        font-size: 40px;
+      }
     }
   </style>
 </head>
@@ -37,7 +43,7 @@
         .then(data => {
           const installs = data.data[0].Instals;
           const jsonOutputElement = document.getElementById('jsonOutput');
-          jsonOutputElement.textContent =  installs;
+          jsonOutputElement.textContent = 'Itemplate Wizard instals: '  + installs;
         })
         .catch(error => {
           console.error('Wystąpił błąd podczas pobierania danych:', error);
