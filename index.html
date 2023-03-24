@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wyświetlanie wartości Instals z pliku JSON</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .installs-container {
+      background-color: black;
+      color: white;
+      font-size: 100vh;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="installs-container">
+    <span id="jsonOutput"></span>
+  </div>
+
+  <script>
+    const jsonUrl = 'https://simplescraper.io/api/lXeupJu6MmCmoikYSi0P?apikey=7mKCPzmFybjUrlxUnJB2mAso4jwWrQYt&limit=100';
+
+    function fetchData() {
+      fetch(jsonUrl)
+        .then(response => response.json())
+        .then(data => {
+          const installs = data.data[0].Instals;
+          const jsonOutputElement = document.getElementById('jsonOutput');
+          jsonOutputElement.textContent =  installs;
+        })
+        .catch(error => {
+          console.error('Wystąpił błąd podczas pobierania danych:', error);
+        });
+    }
+
+    fetchData();
+    setInterval(() => {
+      location.reload();
+    }, 60000); // Odświeżanie co 60 000 ms (1 minuta)
+  </script>
+</body>
+</html>
